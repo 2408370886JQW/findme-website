@@ -183,7 +183,7 @@ export default function Home() {
             className="text-center max-w-3xl mx-auto mb-16"
           >
             <motion.h2 variants={fadeInUp} className="font-['Montserrat'] font-extrabold text-4xl md:text-5xl text-[#1D1D1F] mb-6">
-              三维融合，<span className="text-gradient-brand">完整闭环</span>
+              三维融合  <span className="text-gradient-brand">完整闭环</span>
             </motion.h2>
             <motion.p variants={fadeInUp} className="text-xl text-[#1D1D1F]/70">
               社交 × 地图 × 消费   从认识到体验的一站式解决方案
