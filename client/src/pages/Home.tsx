@@ -275,11 +275,13 @@ export default function Home() {
                 发现身边的有趣灵魂
               </h3>
               <p className="text-lg text-[#1D1D1F]/70 leading-relaxed">
-                基于地图的社交发现，让你看到周围真实存在的人。<br />
-                不再是冰冷的资料卡片，而是活生生的、就在你身边的朋友。
+                基于地图的社交发现<br />
+                让你看到周围真实存在的人<br />
+                不再是冰冷的资料卡片<br />
+                而是活生生的、就在你身边的朋友
               </p>
               <ul className="space-y-3">
-                {["实时位置展示，发现附近的人", "兴趣标签匹配，找到志同道合", "安全距离设置，保护个人隐私"].map((item, i) => (
+                {["实时位置展示  发现附近的人", "兴趣标签匹配  找到志同道合", "安全距离设置  保护个人隐私"].map((item, i) => (
                   <li key={i} className="flex items-center gap-3">
                     <CheckCircle className="w-5 h-5 text-[#FF453A]" />
                     <span className="text-[#1D1D1F]/80">{item}</span>
