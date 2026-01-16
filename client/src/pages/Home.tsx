@@ -195,19 +195,19 @@ export default function Home() {
               {
                 icon: Users,
                 title: "真实社交",
-                description: "100%真实身份验证，85%线下活跃度保障，告别虚假社交",
+                description: "100%真实身份验证\n85%线下活跃度保障\n告别虚假社交",
                 color: "#FF453A"
               },
               {
                 icon: MapPin,
                 title: "地图发现",
-                description: "基于位置的社交发现，让你找到身边志同道合的朋友",
+                description: "基于位置的社交发现\n让你找到身边志同道合的朋友",
                 color: "#FF9F0A"
               },
               {
                 icon: ShoppingBag,
                 title: "精选消费",
-                description: "严选本地优质商家，社交场景下的精准推荐，不踩雷",
+                description: "严选本地优质商家\n社交场景下的精准推荐\n不踩雷",
                 color: "#FF453A"
               }
             ].map((item, index) => (
@@ -226,7 +226,7 @@ export default function Home() {
                   <item.icon className="w-8 h-8" style={{ color: item.color }} />
                 </div>
                 <h3 className="font-['Montserrat'] font-bold text-2xl text-[#1D1D1F] mb-4">{item.title}</h3>
-                <p className="text-[#1D1D1F]/70 leading-relaxed">{item.description}</p>
+                <p className="text-[#1D1D1F]/70 leading-relaxed whitespace-pre-line">{item.description}</p>
               </motion.div>
             ))}
           </div>
