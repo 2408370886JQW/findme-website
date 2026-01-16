@@ -13,7 +13,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { MapPin, Users, ShoppingBag, Shield, ArrowRight, CheckCircle, Sparkles, Heart, Coffee, Utensils, Film, Music } from "lucide-react";
+import { MapPin, Users, ShoppingBag, Shield, ArrowRight, CheckCircle, Sparkles, Heart, Coffee, Utensils, Film, Music, Smartphone } from "lucide-react";
 import { motion } from "framer-motion";
 
 // Animation variants
@@ -608,6 +608,47 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-[#1D1D1F] text-white py-16">
         <div className="container mx-auto px-6">
+          {/* App 下载二维码区域 */}
+          <div className="mb-12 pb-12 border-b border-white/10">
+            <h3 className="font-['Montserrat'] font-bold text-2xl text-center mb-2">立即下载 FIND ME</h3>
+            <p className="text-white/60 text-center mb-8">扫码下载  开启你的探索之旅</p>
+            <div className="flex justify-center gap-12 flex-wrap">
+              {/* iOS 下载 */}
+              <div className="text-center">
+                <div className="w-32 h-32 bg-white rounded-xl flex items-center justify-center mb-3 mx-auto">
+                  <div className="text-[#1D1D1F] text-center">
+                    <Smartphone className="w-8 h-8 mx-auto mb-1 text-[#FF453A]" />
+                    <span className="text-xs font-medium">iOS 二维码</span>
+                  </div>
+                </div>
+                <div className="flex items-center justify-center gap-2 text-white/80">
+                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                  </svg>
+                  <span className="font-medium">App Store</span>
+                </div>
+                <p className="text-white/50 text-sm mt-1">iPhone / iPad</p>
+              </div>
+              
+              {/* Android 下载 */}
+              <div className="text-center">
+                <div className="w-32 h-32 bg-white rounded-xl flex items-center justify-center mb-3 mx-auto">
+                  <div className="text-[#1D1D1F] text-center">
+                    <Smartphone className="w-8 h-8 mx-auto mb-1 text-[#34C759]" />
+                    <span className="text-xs font-medium">Android 二维码</span>
+                  </div>
+                </div>
+                <div className="flex items-center justify-center gap-2 text-white/80">
+                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.523 15.341c-.5 0-.908.406-.908.908s.408.908.908.908c.5 0 .908-.406.908-.908s-.408-.908-.908-.908zm-11.046 0c-.5 0-.908.406-.908.908s.408.908.908.908c.5 0 .908-.406.908-.908s-.408-.908-.908-.908zm11.4-6.744l1.5-2.598c.084-.145.034-.33-.111-.414-.145-.084-.33-.034-.414.111l-1.52 2.633c-1.17-.533-2.484-.83-3.872-.83s-2.702.297-3.872.83l-1.52-2.633c-.084-.145-.269-.195-.414-.111-.145.084-.195.269-.111.414l1.5 2.598c-2.545 1.379-4.268 3.981-4.268 6.953h18.37c0-2.972-1.723-5.574-4.268-6.953z"/>
+                  </svg>
+                  <span className="font-medium">安卓下载</span>
+                </div>
+                <p className="text-white/50 text-sm mt-1">Android 手机</p>
+              </div>
+            </div>
+          </div>
+          
           <div className="grid md:grid-cols-4 gap-12">
             <div className="md:col-span-2">
               <div className="flex items-center gap-2 mb-6">
