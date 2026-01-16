@@ -352,14 +352,16 @@ export default function Home() {
                 <span className="text-sm font-semibold text-[#FF453A]">信任保障</span>
               </div>
 <h3 className="font-['Montserrat'] font-bold text-3xl text-[#1D1D1F]">
-                选得舒心，买得放心，用得安心
+                选得舒心  买得放心  用得安心
               </h3>
               <p className="text-lg text-[#1D1D1F]/70 leading-relaxed">
-                100%真实身份验证，严格的商家准入标准。<br />
-                我们不追求“便宜”，我们追求“不踩雷”。
+                100%真实身份验证<br />
+                严格的商家准入标准<br />
+                我们不追求“便宜”<br />
+                我们追求“不踩雷”
               </p>
               <ul className="space-y-3">
-                {["实名认证，杜绝虚假身份", "商家严选，品质有保障", "售后无忧，问题秒解决"].map((item, i) => (
+                {["实名认证  杜绝虚假身份", "严选入驻商家  品质有保障", "售后无忧  问题秒解决"].map((item, i) => (
                   <li key={i} className="flex items-center gap-3">
                     <CheckCircle className="w-5 h-5 text-[#FF453A]" />
                     <span className="text-[#1D1D1F]/80">{item}</span>
