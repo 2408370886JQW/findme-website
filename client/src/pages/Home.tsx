@@ -617,7 +617,9 @@ export default function Home() {
                 <span className="font-['Montserrat'] font-extrabold text-xl">FIND ME</span>
               </div>
               <p className="text-white/60 max-w-md leading-relaxed">
-                FIND ME 是一款创新的地图社交应用，致力于重构社交与消费的真实连接，让每一次相遇都有完美的落地场景。
+                FIND ME 是一款创新的地图社交应用<br />
+                致力于重构社交与消费的真实连接<br />
+                让每一次相遇都有完美的落地场景
               </p>
             </div>
             
