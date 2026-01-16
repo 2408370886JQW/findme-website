@@ -308,11 +308,13 @@ export default function Home() {
                 社交场景下的完美落地
               </h3>
               <p className="text-lg text-[#1D1D1F]/70 leading-relaxed">
-                当你和新朋友聊得火热，准备见面时，我们为你精选了最适合的场所。<br />
-                不是海量选择让你迷茫，而是精准推荐让你安心。
+                当你和新朋友聊得火热  准备见面时<br />
+                我们为你精选了最适合的场所<br />
+                不是海量选择让你迷茫<br />
+                而是精准推荐让你安心
               </p>
               <ul className="space-y-3">
-                {["严选优质商家，拒绝踩雷", "情侣/闺蜜/兄弟专属套餐", "一键下单，无缝衔接"].map((item, i) => (
+                {["严选优质商家  拒绝踩雷", "情侣/闺蜜/兄弟专属套餐", "一键下单  无缝衔接"].map((item, i) => (
                   <li key={i} className="flex items-center gap-3">
                     <CheckCircle className="w-5 h-5 text-[#FF9F0A]" />
                     <span className="text-[#1D1D1F]/80">{item}</span>
