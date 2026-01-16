@@ -404,7 +404,7 @@ export default function Home() {
               <h3 className="font-['Montserrat'] font-bold text-2xl mb-6">美团模式</h3>
               <ul className="space-y-4">
                 {[
-                  "泛商城，海量选择",
+                  "泛商城  海量选择",
                   "核心价值：便宜",
                   "用户需要自己筛选",
                   "与社交场景割裂"
@@ -431,7 +431,7 @@ export default function Home() {
               <h3 className="font-['Montserrat'] font-bold text-2xl mb-6">FIND ME 模式</h3>
               <ul className="space-y-4">
                 {[
-                  "精选推荐，场景匹配",
+                  "精选推荐  场景匹配",
                   "核心价值：不踩雷",
                   "平台帮你严格筛选",
                   "社交场景无缝衔接"
@@ -471,19 +471,19 @@ export default function Home() {
                 number: "01",
                 title: "入口",
                 subtitle: "Entrance",
-                description: "地图社交是本地生活的最佳入口。用户来地图是为了认识人、见面，这是最真实的需求起点。"
+                description: "地图社交是本地生活的最佳入口\n用户来地图是为了认识人、见面\n这是最真实的需求起点"
               },
               {
                 number: "02",
                 title: "场景",
                 subtitle: "Scene",
-                description: "团购是社交场景的完美落地。见面就需要场景、就一定会消费，这是最自然的转化路径。"
+                description: "团购是社交场景的完美落地\n见面就需要场景、就一定会消费\n这是最自然的转化路径"
               },
               {
                 number: "03",
                 title: "闭环",
                 subtitle: "Closed Loop",
-                description: "从认识到体验的完整闭环。解决'去哪里、买什么、怎么选'，这是最完整的价值链条。"
+                description: "从认识到体验的完整闭环\n解决'去哪里、买什么、怎么选'\n这是最完整的价值链条"
               }
             ].map((item, index) => (
               <motion.div
@@ -500,7 +500,7 @@ export default function Home() {
                 <div className="relative pt-12 pl-4">
                   <h3 className="font-['Montserrat'] font-bold text-3xl text-[#1D1D1F] mb-1">{item.title}</h3>
                   <div className="text-[#FF453A] font-medium mb-4">{item.subtitle}</div>
-                  <p className="text-[#1D1D1F]/70 leading-relaxed">{item.description}</p>
+                  <p className="text-[#1D1D1F]/70 leading-relaxed whitespace-pre-line">{item.description}</p>
                 </div>
               </motion.div>
             ))}
