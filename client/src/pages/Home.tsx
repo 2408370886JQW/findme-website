@@ -186,7 +186,7 @@ export default function Home() {
               三维融合，<span className="text-gradient-brand">完整闭环</span>
             </motion.h2>
             <motion.p variants={fadeInUp} className="text-xl text-[#1D1D1F]/70">
-              社交 × 地图 × 消费，从认识到体验的一站式解决方案
+              社交 × 地图 × 消费   从认识到体验的一站式解决方案
             </motion.p>
           </motion.div>
           
@@ -275,7 +275,8 @@ export default function Home() {
                 发现身边的有趣灵魂
               </h3>
               <p className="text-lg text-[#1D1D1F]/70 leading-relaxed">
-                基于地图的社交发现，让你看到周围真实存在的人。不再是冰冷的资料卡片，而是活生生的、就在你身边的朋友。
+                基于地图的社交发现，让你看到周围真实存在的人。<br />
+                不再是冰冷的资料卡片，而是活生生的、就在你身边的朋友。
               </p>
               <ul className="space-y-3">
                 {["实时位置展示，发现附近的人", "兴趣标签匹配，找到志同道合", "安全距离设置，保护个人隐私"].map((item, i) => (
@@ -305,7 +306,8 @@ export default function Home() {
                 社交场景下的完美落地
               </h3>
               <p className="text-lg text-[#1D1D1F]/70 leading-relaxed">
-                当你和新朋友聊得火热，准备见面时，我们为你精选了最适合的场所。不是海量选择让你迷茫，而是精准推荐让你安心。
+                当你和新朋友聊得火热，准备见面时，我们为你精选了最适合的场所。<br />
+                不是海量选择让你迷茫，而是精准推荐让你安心。
               </p>
               <ul className="space-y-3">
                 {["严选优质商家，拒绝踩雷", "情侣/闺蜜/兄弟专属套餐", "一键下单，无缝衔接"].map((item, i) => (
@@ -345,11 +347,12 @@ export default function Home() {
                 <Shield className="w-4 h-4 text-[#FF453A]" />
                 <span className="text-sm font-semibold text-[#FF453A]">信任保障</span>
               </div>
-              <h3 className="font-['Montserrat'] font-bold text-3xl text-[#1D1D1F]">
+<h3 className="font-['Montserrat'] font-bold text-3xl text-[#1D1D1F]">
                 选得舒心，买得放心，用得安心
               </h3>
               <p className="text-lg text-[#1D1D1F]/70 leading-relaxed">
-                100%真实身份验证，严格的商家准入标准。我们不追求"便宜"，我们追求"不踩雷"。
+                100%真实身份验证，严格的商家准入标准。<br />
+                我们不追求“便宜”，我们追求“不踩雷”。
               </p>
               <ul className="space-y-3">
                 {["实名认证，杜绝虚假身份", "商家严选，品质有保障", "售后无忧，问题秒解决"].map((item, i) => (
@@ -378,7 +381,7 @@ export default function Home() {
               为什么选择 <span className="text-[#FF453A]">FIND ME</span>
             </motion.h2>
             <motion.p variants={fadeInUp} className="text-xl text-white/70">
-              不是 Copy 美团，而是社交场景下的本地生活
+              不是 COPY 美团  而是社交场景下的本地生活
             </motion.p>
           </motion.div>
           
@@ -526,7 +529,7 @@ export default function Home() {
               丰富的社交场景
             </motion.h2>
             <motion.p variants={fadeInUp} className="text-xl text-[#1D1D1F]/70">
-              无论是约会、闺蜜聚会还是兄弟小酌，我们都有完美方案
+              无论是约会、闺蜜聚会还是兄弟小酌  我们都有完美方案
             </motion.p>
           </motion.div>
           
@@ -581,7 +584,7 @@ export default function Home() {
               准备好开始你的探索了吗？
             </motion.h2>
             <motion.p variants={fadeInUp} className="text-xl text-white/80 mb-10">
-              加入 FIND ME，发现身边的精彩世界
+              加入 FIND ME  发现身边的精彩世界
             </motion.p>
             <motion.div variants={fadeInUp} className="flex flex-wrap justify-center gap-4">
               <Button size="lg" className="bg-white text-[#FF453A] hover:bg-white/90 font-semibold px-8 py-6 text-lg rounded-xl shadow-lg">
@@ -624,8 +627,9 @@ export default function Home() {
             <div>
               <h4 className="font-semibold mb-4">联系我们</h4>
               <ul className="space-y-3 text-white/60">
-                <li>contact@findme.com</li>
-                <li>商务合作：business@findme.com</li>
+                <li>qiwei.ji@faxianwo.me</li>
+                <li>WeChat: JQW5958</li>
+                <li>Tel: 18097665958</li>
               </ul>
             </div>
           </div>
