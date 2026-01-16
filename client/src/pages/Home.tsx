@@ -88,7 +88,8 @@ export default function Home() {
               </motion.h1>
               
               <motion.p variants={fadeInUp} className="text-xl md:text-2xl text-[#1D1D1F]/70 max-w-xl leading-relaxed">
-                重构社交与消费的<span className="text-[#FF453A] font-semibold">真实连接</span>，
+                重构社交与消费的<span className="text-[#FF453A] font-semibold">真实连接</span>
+                <br />
                 用地图打造本地生活的完整闭环
               </motion.p>
               
