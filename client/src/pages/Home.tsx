@@ -15,6 +15,7 @@
 import { Button } from "@/components/ui/button";
 import { MapPin, Users, ShoppingBag, Shield, ArrowRight, CheckCircle, Sparkles, Heart, Coffee, Utensils, Film, Music, Smartphone } from "lucide-react";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 // Animation variants
 const fadeInUp = {
@@ -36,8 +37,10 @@ const scaleIn = {
 } as const;
 
 export default function Home() {
+  const { t, language, setLanguage, dir } = useLanguage();
+  
   return (
-    <div className="min-h-screen bg-[#F5F5F7]">
+    <div className="min-h-screen bg-[#F5F5F7]" dir={dir}>
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/50">
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
@@ -48,14 +51,25 @@ export default function Home() {
             <span className="font-['Montserrat'] font-extrabold text-xl text-[#1D1D1F]">FIND ME</span>
           </div>
           <div className="hidden md:flex items-center gap-8">
-            <a href="#features" className="text-[#1D1D1F]/70 hover:text-[#FF453A] transition-colors font-medium">核心功能</a>
-            <a href="#advantages" className="text-[#1D1D1F]/70 hover:text-[#FF453A] transition-colors font-medium">竞争优势</a>
-            <a href="#model" className="text-[#1D1D1F]/70 hover:text-[#FF453A] transition-colors font-medium">商业模式</a>
-            <a href="#contact" className="text-[#1D1D1F]/70 hover:text-[#FF453A] transition-colors font-medium">联系我们</a>
+            <a href="#features" className="text-[#1D1D1F]/70 hover:text-[#FF453A] transition-colors font-medium">{t("nav.features")}</a>
+            <a href="#advantages" className="text-[#1D1D1F]/70 hover:text-[#FF453A] transition-colors font-medium">{t("nav.advantages")}</a>
+            <a href="#model" className="text-[#1D1D1F]/70 hover:text-[#FF453A] transition-colors font-medium">{t("nav.model")}</a>
+            <a href="#contact" className="text-[#1D1D1F]/70 hover:text-[#FF453A] transition-colors font-medium">{t("nav.contact")}</a>
           </div>
-          <Button className="bg-[#FF453A] hover:bg-[#E03E33] text-white font-semibold px-6">
-            立即体验
-          </Button>
+          <div className="flex items-center gap-3">
+            {/* Language Switcher */}
+            <Button
+              variant="outline"
+              size="sm"
+              className="border-[#FF453A]/30 text-[#FF453A] hover:bg-[#FF453A]/10"
+              onClick={() => setLanguage(language === 'zh' ? 'ug' : 'zh')}
+            >
+              {language === 'zh' ? 'ئۇيغۇرچە' : '中文'}
+            </Button>
+            <Button className="bg-[#FF453A] hover:bg-[#E03E33] text-white font-semibold px-6">
+              {t("nav.cta")}
+            </Button>
+          </div>
         </div>
       </nav>
 
@@ -79,51 +93,51 @@ export default function Home() {
             >
               <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full border border-[#FF453A]/20">
                 <Sparkles className="w-4 h-4 text-[#FF453A]" />
-                <span className="text-sm font-medium text-[#1D1D1F]">地图社交 × 本地生活</span>
+                <span className="text-sm font-medium text-[#1D1D1F]">{t("hero.badge")}</span>
               </motion.div>
               
               <motion.h1 variants={fadeInUp} className="font-['Montserrat'] font-extrabold text-5xl md:text-6xl lg:text-7xl text-[#1D1D1F] leading-tight">
-                FIND ME
-                <span className="block text-gradient-brand">发现我</span>
+                {t("hero.title")}
+                <span className="block text-gradient-brand">{t("hero.subtitle")}</span>
               </motion.h1>
               
               <motion.p variants={fadeInUp} className="text-xl md:text-2xl text-[#1D1D1F]/70 max-w-xl leading-relaxed">
-                重构社交与消费的<span className="text-[#FF453A] font-semibold">真实连接</span>
+                {t("hero.desc.1")}<span className="text-[#FF453A] font-semibold">{t("hero.desc.highlight")}</span>
                 <br />
-                用地图打造本地生活的完整闭环
+                {t("hero.desc.2")}
               </motion.p>
               
               <motion.div variants={fadeInUp} className="flex flex-wrap gap-4">
                 <Button size="lg" className="bg-[#FF453A] hover:bg-[#E03E33] text-white font-semibold px-8 py-6 text-lg rounded-xl shadow-lg shadow-[#FF453A]/30 hover:shadow-xl hover:shadow-[#FF453A]/40 transition-all">
-                  开始探索
-                  <ArrowRight className="ml-2 w-5 h-5" />
+                  {t("hero.btn.explore")}
+                  <ArrowRight className={`w-5 h-5 ${dir === 'rtl' ? 'mr-2 rotate-180' : 'ml-2'}`} />
                 </Button>
                 <Button size="lg" variant="outline" className="border-2 border-[#1D1D1F]/20 text-[#1D1D1F] font-semibold px-8 py-6 text-lg rounded-xl hover:bg-[#1D1D1F]/5 transition-all">
-                  了解更多
+                  {t("hero.btn.more")}
                 </Button>
               </motion.div>
               
               <motion.div variants={fadeInUp} className="flex items-center gap-8 pt-4">
                 <div className="text-center">
-                  <div className="font-['Montserrat'] font-bold text-3xl text-[#FF453A]">100%</div>
-                  <div className="text-sm text-[#1D1D1F]/60">真实身份验证</div>
+                  <div className="font-['Montserrat'] font-bold text-3xl text-[#FF453A]">{t("hero.stat.1.value")}</div>
+                  <div className="text-sm text-[#1D1D1F]/60">{t("hero.stat.1.label")}</div>
                 </div>
                 <div className="w-px h-12 bg-[#1D1D1F]/10" />
                 <div className="text-center">
-                  <div className="font-['Montserrat'] font-bold text-3xl text-[#FF453A]">85%</div>
-                  <div className="text-sm text-[#1D1D1F]/60">线下活跃度</div>
+                  <div className="font-['Montserrat'] font-bold text-3xl text-[#FF453A]">{t("hero.stat.2.value")}</div>
+                  <div className="text-sm text-[#1D1D1F]/60">{t("hero.stat.2.label")}</div>
                 </div>
                 <div className="w-px h-12 bg-[#1D1D1F]/10" />
                 <div className="text-center">
-                  <div className="font-['Montserrat'] font-bold text-3xl text-[#FF453A]">3.5x</div>
-                  <div className="text-sm text-[#1D1D1F]/60">转化率提升</div>
+                  <div className="font-['Montserrat'] font-bold text-3xl text-[#FF453A]">{t("hero.stat.3.value")}</div>
+                  <div className="text-sm text-[#1D1D1F]/60">{t("hero.stat.3.label")}</div>
                 </div>
               </motion.div>
             </motion.div>
             
             {/* Right: Hero Image */}
             <motion.div 
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, x: dir === 'rtl' ? -50 : 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               className="relative"
@@ -138,15 +152,15 @@ export default function Home() {
                 <motion.div 
                   animate={{ y: [0, -10, 0] }}
                   transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -left-8 top-1/4 bg-white rounded-xl p-4 shadow-xl"
+                  className={`absolute ${dir === 'rtl' ? '-right-8' : '-left-8'} top-1/4 bg-white rounded-xl p-4 shadow-xl`}
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-[#FF453A]/10 flex items-center justify-center">
                       <Heart className="w-5 h-5 text-[#FF453A]" />
                     </div>
                     <div>
-                      <div className="font-semibold text-[#1D1D1F]">新朋友匹配</div>
-                      <div className="text-sm text-[#1D1D1F]/60">距离你 500m</div>
+                      <div className="font-semibold text-[#1D1D1F]">{t("hero.card.1.title")}</div>
+                      <div className="text-sm text-[#1D1D1F]/60">{t("hero.card.1.desc")}</div>
                     </div>
                   </div>
                 </motion.div>
@@ -154,15 +168,15 @@ export default function Home() {
                 <motion.div 
                   animate={{ y: [0, 10, 0] }}
                   transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -right-4 bottom-1/3 bg-white rounded-xl p-4 shadow-xl"
+                  className={`absolute ${dir === 'rtl' ? '-left-4' : '-right-4'} bottom-1/3 bg-white rounded-xl p-4 shadow-xl`}
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-[#FF9F0A]/10 flex items-center justify-center">
                       <Coffee className="w-5 h-5 text-[#FF9F0A]" />
                     </div>
                     <div>
-                      <div className="font-semibold text-[#1D1D1F]">精选咖啡厅</div>
-                      <div className="text-sm text-[#FF453A] font-medium">8折优惠</div>
+                      <div className="font-semibold text-[#1D1D1F]">{t("hero.card.2.title")}</div>
+                      <div className="text-sm text-[#FF453A] font-medium">{t("hero.card.2.desc")}</div>
                     </div>
                   </div>
                 </motion.div>
@@ -183,10 +197,10 @@ export default function Home() {
             className="text-center max-w-3xl mx-auto mb-16"
           >
             <motion.h2 variants={fadeInUp} className="font-['Montserrat'] font-extrabold text-4xl md:text-5xl text-[#1D1D1F] mb-6">
-              三维融合  <span className="text-gradient-brand">完整闭环</span>
+              {t("value.title.1")}  <span className="text-gradient-brand">{t("value.title.2")}</span>
             </motion.h2>
             <motion.p variants={fadeInUp} className="text-xl text-[#1D1D1F]/70">
-              社交 × 地图 × 消费   从认识到体验的一站式解决方案
+              {t("value.subtitle")}
             </motion.p>
           </motion.div>
           
@@ -194,20 +208,20 @@ export default function Home() {
             {[
               {
                 icon: Users,
-                title: "真实社交",
-                description: "100%真实身份验证\n85%线下活跃度保障\n告别虚假社交",
+                titleKey: "value.1.title",
+                descKey: "value.1.desc",
                 color: "#FF453A"
               },
               {
                 icon: MapPin,
-                title: "地图发现",
-                description: "基于位置的社交发现\n让你找到身边志同道合的朋友",
+                titleKey: "value.2.title",
+                descKey: "value.2.desc",
                 color: "#FF9F0A"
               },
               {
                 icon: ShoppingBag,
-                title: "精选消费",
-                description: "严选本地优质商家\n社交场景下的精准推荐\n不踩雷",
+                titleKey: "value.3.title",
+                descKey: "value.3.desc",
                 color: "#FF453A"
               }
             ].map((item, index) => (
@@ -225,8 +239,8 @@ export default function Home() {
                 >
                   <item.icon className="w-8 h-8" style={{ color: item.color }} />
                 </div>
-                <h3 className="font-['Montserrat'] font-bold text-2xl text-[#1D1D1F] mb-4">{item.title}</h3>
-                <p className="text-[#1D1D1F]/70 leading-relaxed whitespace-pre-line">{item.description}</p>
+                <h3 className="font-['Montserrat'] font-bold text-2xl text-[#1D1D1F] mb-4">{t(item.titleKey)}</h3>
+                <p className="text-[#1D1D1F]/70 leading-relaxed whitespace-pre-line">{t(item.descKey)}</p>
               </motion.div>
             ))}
           </div>
@@ -244,132 +258,58 @@ export default function Home() {
             className="text-center max-w-3xl mx-auto mb-16"
           >
             <motion.h2 variants={fadeInUp} className="font-['Montserrat'] font-extrabold text-4xl md:text-5xl text-[#1D1D1F] mb-6">
-              核心功能
+              {t("features.title")}
             </motion.h2>
             <motion.p variants={fadeInUp} className="text-xl text-[#1D1D1F]/70">
-              打造从认识到体验的完整用户旅程
+              {t("features.subtitle")}
             </motion.p>
           </motion.div>
           
-          {/* Feature 1: Map Social */}
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-            className="grid lg:grid-cols-2 gap-12 items-center mb-24"
-          >
-            <div className="order-2 lg:order-1">
-              <img 
-                src="/images/feature-social.png" 
-                alt="地图社交功能" 
-                className="w-full max-w-md mx-auto"
-              />
-            </div>
-            <div className="order-1 lg:order-2 space-y-6">
-              <div className="inline-flex items-center gap-2 bg-[#FF453A]/10 px-4 py-2 rounded-full">
-                <MapPin className="w-4 h-4 text-[#FF453A]" />
-                <span className="text-sm font-semibold text-[#FF453A]">地图社交</span>
-              </div>
-              <h3 className="font-['Montserrat'] font-bold text-3xl text-[#1D1D1F]">
-                发现身边的有趣灵魂
-              </h3>
-              <p className="text-lg text-[#1D1D1F]/70 leading-relaxed">
-                基于地图的社交发现<br />
-                让你看到周围真实存在的人<br />
-                不再是冰冷的资料卡片<br />
-                而是活生生的、就在你身边的朋友
-              </p>
-              <ul className="space-y-3">
-                {["实时位置展示  发现附近的人", "兴趣标签匹配  找到志同道合", "安全距离设置  保护个人隐私"].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-[#FF453A]" />
-                    <span className="text-[#1D1D1F]/80">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </motion.div>
-          
-          {/* Feature 2: Curated Deals */}
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-            className="grid lg:grid-cols-2 gap-12 items-center mb-24"
-          >
-            <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 bg-[#FF9F0A]/10 px-4 py-2 rounded-full">
-                <ShoppingBag className="w-4 h-4 text-[#FF9F0A]" />
-                <span className="text-sm font-semibold text-[#FF9F0A]">精选团购</span>
-              </div>
-              <h3 className="font-['Montserrat'] font-bold text-3xl text-[#1D1D1F]">
-                社交场景下的完美落地
-              </h3>
-              <p className="text-lg text-[#1D1D1F]/70 leading-relaxed">
-                当你和新朋友聊得火热  准备见面时<br />
-                我们为你精选了最适合的场所<br />
-                不是海量选择让你迷茫<br />
-                而是精准推荐让你安心
-              </p>
-              <ul className="space-y-3">
-                {["严选优质商家  拒绝踩雷", "情侣/闺蜜/兄弟专属套餐", "一键下单  无缝衔接"].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-[#FF9F0A]" />
-                    <span className="text-[#1D1D1F]/80">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <img 
-                src="/images/feature-deals.png" 
-                alt="精选团购功能" 
-                className="w-full max-w-md mx-auto"
-              />
-            </div>
-          </motion.div>
-          
-          {/* Feature 3: Trust & Safety */}
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-            className="grid lg:grid-cols-2 gap-12 items-center"
-          >
-            <div className="order-2 lg:order-1">
-              <img 
-                src="/images/feature-trust.png" 
-                alt="信任与安全" 
-                className="w-full max-w-md mx-auto"
-              />
-            </div>
-            <div className="order-1 lg:order-2 space-y-6">
-              <div className="inline-flex items-center gap-2 bg-[#FF453A]/10 px-4 py-2 rounded-full">
-                <Shield className="w-4 h-4 text-[#FF453A]" />
-                <span className="text-sm font-semibold text-[#FF453A]">信任保障</span>
-              </div>
-<h3 className="font-['Montserrat'] font-bold text-3xl text-[#1D1D1F]">
-                选得舒心  买得放心  用得安心
-              </h3>
-              <p className="text-lg text-[#1D1D1F]/70 leading-relaxed">
-                100%真实身份验证<br />
-                严格的商家准入标准<br />
-                我们不追求“便宜”<br />
-                我们追求“不踩雷”
-              </p>
-              <ul className="space-y-3">
-                {["实名认证  杜绝虚假身份", "严选入驻商家  品质有保障", "售后无忧  问题秒解决"].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-[#FF453A]" />
-                    <span className="text-[#1D1D1F]/80">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </motion.div>
+          {/* Feature Cards */}
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: MapPin,
+                titleKey: "features.1.title",
+                subtitleKey: "features.1.subtitle",
+                descKey: "features.1.desc",
+                color: "#FF453A"
+              },
+              {
+                icon: ShoppingBag,
+                titleKey: "features.2.title",
+                subtitleKey: "features.2.subtitle",
+                descKey: "features.2.desc",
+                color: "#FF9F0A"
+              },
+              {
+                icon: Shield,
+                titleKey: "features.3.title",
+                subtitleKey: "features.3.subtitle",
+                descKey: "features.3.desc",
+                color: "#FF453A"
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={scaleIn}
+                className="bg-white rounded-2xl p-8 hover:shadow-2xl hover:shadow-[#FF453A]/10 transition-all duration-500"
+              >
+                <div 
+                  className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6"
+                  style={{ backgroundColor: `${item.color}15` }}
+                >
+                  <item.icon className="w-8 h-8" style={{ color: item.color }} />
+                </div>
+                <h3 className="font-['Montserrat'] font-bold text-2xl text-[#1D1D1F] mb-1">{t(item.titleKey)}</h3>
+                <div className="text-[#FF453A] font-medium mb-4">{t(item.subtitleKey)}</div>
+                <p className="text-[#1D1D1F]/70 leading-relaxed whitespace-pre-line">{t(item.descKey)}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -384,65 +324,35 @@ export default function Home() {
             className="text-center max-w-3xl mx-auto mb-16"
           >
             <motion.h2 variants={fadeInUp} className="font-['Montserrat'] font-extrabold text-4xl md:text-5xl mb-6">
-              为什么选择 <span className="text-[#FF453A]">FIND ME</span>
+              {t("advantages.title")}
             </motion.h2>
             <motion.p variants={fadeInUp} className="text-xl text-white/70">
-              不是 COPY 美团  而是社交场景下的本地生活
+              {t("advantages.subtitle")}
             </motion.p>
           </motion.div>
           
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Comparison Card */}
-            <motion.div 
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={scaleIn}
-              className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10"
-            >
-              <div className="text-white/50 text-sm font-medium mb-4">传统团购平台</div>
-              <h3 className="font-['Montserrat'] font-bold text-2xl mb-6">美团模式</h3>
-              <ul className="space-y-4">
-                {[
-                  "泛商城  海量选择",
-                  "核心价值：便宜",
-                  "用户需要自己筛选",
-                  "与社交场景割裂"
-                ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-white/60">
-                    <div className="w-2 h-2 rounded-full bg-white/30" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-            
-            <motion.div 
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={scaleIn}
-              className="bg-gradient-to-br from-[#FF453A] to-[#FF9F0A] rounded-2xl p-8 relative overflow-hidden"
-            >
-              <div className="absolute top-4 right-4 bg-white/20 px-3 py-1 rounded-full text-sm font-medium">
-                推荐
-              </div>
-              <div className="text-white/80 text-sm font-medium mb-4">地图社交平台</div>
-              <h3 className="font-['Montserrat'] font-bold text-2xl mb-6">FIND ME 模式</h3>
-              <ul className="space-y-4">
-                {[
-                  "精选推荐  场景匹配",
-                  "核心价值：不踩雷",
-                  "平台帮你严格筛选",
-                  "社交场景无缝衔接"
-                ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-white">
-                    <CheckCircle className="w-5 h-5" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {[
+              { titleKey: "advantages.1.title", descKey: "advantages.1.desc", icon: Shield },
+              { titleKey: "advantages.2.title", descKey: "advantages.2.desc", icon: MapPin },
+              { titleKey: "advantages.3.title", descKey: "advantages.3.desc", icon: Users },
+              { titleKey: "advantages.4.title", descKey: "advantages.4.desc", icon: ShoppingBag }
+            ].map((item, index) => (
+              <motion.div 
+                key={index}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={scaleIn}
+                className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:bg-white/10 transition-all"
+              >
+                <div className="w-12 h-12 rounded-xl bg-[#FF453A]/20 flex items-center justify-center mb-4">
+                  <item.icon className="w-6 h-6 text-[#FF453A]" />
+                </div>
+                <h3 className="font-['Montserrat'] font-bold text-xl mb-3">{t(item.titleKey)}</h3>
+                <p className="text-white/60 text-sm leading-relaxed">{t(item.descKey)}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -458,32 +368,32 @@ export default function Home() {
             className="text-center max-w-3xl mx-auto mb-16"
           >
             <motion.h2 variants={fadeInUp} className="font-['Montserrat'] font-extrabold text-4xl md:text-5xl text-[#1D1D1F] mb-6">
-              三个关键词
+              {t("model.title")}
             </motion.h2>
             <motion.p variants={fadeInUp} className="text-xl text-[#1D1D1F]/70">
-              入口 · 场景 · 闭环
+              {t("model.subtitle")}
             </motion.p>
           </motion.div>
           
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                number: "01",
-                title: "入口",
-                subtitle: "Entrance",
-                description: "地图社交是本地生活的最佳入口\n用户来地图是为了认识人、见面\n这是最真实的需求起点"
+                titleKey: "model.1.title",
+                subtitleKey: "model.1.subtitle",
+                descKey: "model.1.desc",
+                icon: Users
               },
               {
-                number: "02",
-                title: "场景",
-                subtitle: "Scene",
-                description: "团购是社交场景的完美落地\n见面就需要场景、就一定会消费\n这是最自然的转化路径"
+                titleKey: "model.2.title",
+                subtitleKey: "model.2.subtitle",
+                descKey: "model.2.desc",
+                icon: ShoppingBag
               },
               {
-                number: "03",
-                title: "闭环",
-                subtitle: "Closed Loop",
-                description: "从认识到体验的完整闭环\n解决'去哪里、买什么、怎么选'\n这是最完整的价值链条"
+                titleKey: "model.3.title",
+                subtitleKey: "model.3.subtitle",
+                descKey: "model.3.desc",
+                icon: MapPin
               }
             ].map((item, index) => (
               <motion.div
@@ -492,16 +402,14 @@ export default function Home() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeInUp}
-                className="relative"
+                className="relative bg-[#F5F5F7] rounded-2xl p-8"
               >
-                <div className="font-['Montserrat'] font-black text-8xl text-[#FF453A]/10 absolute -top-4 -left-2">
-                  {item.number}
+                <div className="w-14 h-14 rounded-2xl bg-[#FF453A]/10 flex items-center justify-center mb-6">
+                  <item.icon className="w-7 h-7 text-[#FF453A]" />
                 </div>
-                <div className="relative pt-12 pl-4">
-                  <h3 className="font-['Montserrat'] font-bold text-3xl text-[#1D1D1F] mb-1">{item.title}</h3>
-                  <div className="text-[#FF453A] font-medium mb-4">{item.subtitle}</div>
-                  <p className="text-[#1D1D1F]/70 leading-relaxed whitespace-pre-line">{item.description}</p>
-                </div>
+                <h3 className="font-['Montserrat'] font-bold text-3xl text-[#1D1D1F] mb-1">{t(item.titleKey)}</h3>
+                <div className="text-[#FF453A] font-medium mb-4">{t(item.subtitleKey)}</div>
+                <p className="text-[#1D1D1F]/70 leading-relaxed whitespace-pre-line">{t(item.descKey)}</p>
               </motion.div>
             ))}
           </div>
@@ -514,8 +422,8 @@ export default function Home() {
             className="mt-16 text-center"
           >
             <div className="inline-block bg-[#1D1D1F] text-white px-8 py-4 rounded-xl">
-              <span className="text-xl font-medium">做社交 → </span>
-              <span className="text-xl font-bold text-[#FF453A]">天然就是做本地生活</span>
+              <span className="text-xl font-medium">{t("model.conclusion")} </span>
+              <span className="text-xl font-bold text-[#FF453A]">{t("model.conclusion.highlight")}</span>
             </div>
           </motion.div>
         </div>
@@ -532,19 +440,19 @@ export default function Home() {
             className="text-center max-w-3xl mx-auto mb-16"
           >
             <motion.h2 variants={fadeInUp} className="font-['Montserrat'] font-extrabold text-4xl md:text-5xl text-[#1D1D1F] mb-6">
-              丰富的社交场景
+              {t("scenarios.title")}
             </motion.h2>
             <motion.p variants={fadeInUp} className="text-xl text-[#1D1D1F]/70">
-              无论是约会、闺蜜聚会还是兄弟小酌  我们都有完美方案
+              {t("scenarios.subtitle")}
             </motion.p>
           </motion.div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { icon: Coffee, label: "咖啡约会", color: "#8B4513" },
-              { icon: Utensils, label: "美食探店", color: "#FF453A" },
-              { icon: Film, label: "电影之夜", color: "#1D1D1F" },
-              { icon: Music, label: "音乐现场", color: "#FF9F0A" }
+              { icon: Coffee, labelKey: "scenario.1", color: "#8B4513" },
+              { icon: Utensils, labelKey: "scenario.2", color: "#FF453A" },
+              { icon: Film, labelKey: "scenario.3", color: "#1D1D1F" },
+              { icon: Music, labelKey: "scenario.4", color: "#FF9F0A" }
             ].map((item, index) => (
               <motion.div
                 key={index}
@@ -560,7 +468,7 @@ export default function Home() {
                 >
                   <item.icon className="w-8 h-8" style={{ color: item.color }} />
                 </div>
-                <div className="font-semibold text-[#1D1D1F]">{item.label}</div>
+                <div className="font-semibold text-[#1D1D1F]">{t(item.labelKey)}</div>
               </motion.div>
             ))}
           </div>
@@ -587,18 +495,18 @@ export default function Home() {
             className="text-center max-w-3xl mx-auto"
           >
             <motion.h2 variants={fadeInUp} className="font-['Montserrat'] font-extrabold text-4xl md:text-5xl text-white mb-6">
-              准备好开始你的探索了吗？
+              {t("cta.title")}
             </motion.h2>
             <motion.p variants={fadeInUp} className="text-xl text-white/80 mb-10">
-              加入 FIND ME  发现身边的精彩世界
+              {t("cta.subtitle")}
             </motion.p>
             <motion.div variants={fadeInUp} className="flex flex-wrap justify-center gap-4">
               <Button size="lg" className="bg-white text-[#FF453A] hover:bg-white/90 font-semibold px-8 py-6 text-lg rounded-xl shadow-lg">
-                立即下载 App
-                <ArrowRight className="ml-2 w-5 h-5" />
+                {t("cta.btn.download")}
+                <ArrowRight className={`w-5 h-5 ${dir === 'rtl' ? 'mr-2 rotate-180' : 'ml-2'}`} />
               </Button>
               <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10 font-semibold px-8 py-6 text-lg rounded-xl">
-                商家入驻
+                {t("cta.btn.merchant")}
               </Button>
             </motion.div>
           </motion.div>
@@ -610,24 +518,24 @@ export default function Home() {
         <div className="container mx-auto px-6">
           {/* App 下载二维码区域 */}
           <div className="mb-12 pb-12 border-b border-white/10">
-            <h3 className="font-['Montserrat'] font-bold text-2xl text-center mb-2">立即下载 FIND ME</h3>
-            <p className="text-white/60 text-center mb-8">扫码下载  开启你的探索之旅</p>
+            <h3 className="font-['Montserrat'] font-bold text-2xl text-center mb-2">{t("footer.download.title")}</h3>
+            <p className="text-white/60 text-center mb-8">{t("footer.download.subtitle")}</p>
             <div className="flex justify-center gap-12 flex-wrap">
               {/* iOS 下载 */}
               <div className="text-center">
                 <div className="w-32 h-32 bg-white rounded-xl flex items-center justify-center mb-3 mx-auto">
                   <div className="text-[#1D1D1F] text-center">
                     <Smartphone className="w-8 h-8 mx-auto mb-1 text-[#FF453A]" />
-                    <span className="text-xs font-medium">iOS 二维码</span>
+                    <span className="text-xs font-medium">{t("footer.ios.qr")}</span>
                   </div>
                 </div>
                 <div className="flex items-center justify-center gap-2 text-white/80">
                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
                   </svg>
-                  <span className="font-medium">App Store</span>
+                  <span className="font-medium">{t("footer.ios")}</span>
                 </div>
-                <p className="text-white/50 text-sm mt-1">iPhone / iPad</p>
+                <p className="text-white/50 text-sm mt-1">{t("footer.ios.desc")}</p>
               </div>
               
               {/* Android 下载 */}
@@ -635,16 +543,16 @@ export default function Home() {
                 <div className="w-32 h-32 bg-white rounded-xl flex items-center justify-center mb-3 mx-auto">
                   <div className="text-[#1D1D1F] text-center">
                     <Smartphone className="w-8 h-8 mx-auto mb-1 text-[#34C759]" />
-                    <span className="text-xs font-medium">Android 二维码</span>
+                    <span className="text-xs font-medium">{t("footer.android.qr")}</span>
                   </div>
                 </div>
                 <div className="flex items-center justify-center gap-2 text-white/80">
                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M17.523 15.341c-.5 0-.908.406-.908.908s.408.908.908.908c.5 0 .908-.406.908-.908s-.408-.908-.908-.908zm-11.046 0c-.5 0-.908.406-.908.908s.408.908.908.908c.5 0 .908-.406.908-.908s-.408-.908-.908-.908zm11.4-6.744l1.5-2.598c.084-.145.034-.33-.111-.414-.145-.084-.33-.034-.414.111l-1.52 2.633c-1.17-.533-2.484-.83-3.872-.83s-2.702.297-3.872.83l-1.52-2.633c-.084-.145-.269-.195-.414-.111-.145.084-.195.269-.111.414l1.5 2.598c-2.545 1.379-4.268 3.981-4.268 6.953h18.37c0-2.972-1.723-5.574-4.268-6.953z"/>
                   </svg>
-                  <span className="font-medium">安卓下载</span>
+                  <span className="font-medium">{t("footer.android")}</span>
                 </div>
-                <p className="text-white/50 text-sm mt-1">Android 手机</p>
+                <p className="text-white/50 text-sm mt-1">{t("footer.android.desc")}</p>
               </div>
             </div>
           </div>
@@ -657,24 +565,22 @@ export default function Home() {
                 </div>
                 <span className="font-['Montserrat'] font-extrabold text-xl">FIND ME</span>
               </div>
-              <p className="text-white/60 max-w-md leading-relaxed">
-                FIND ME 是一款创新的地图社交应用<br />
-                致力于重构社交与消费的真实连接<br />
-                让每一次相遇都有完美的落地场景
+              <p className="text-white/60 max-w-md leading-relaxed whitespace-pre-line">
+                {t("footer.about")}
               </p>
             </div>
             
             <div>
-              <h4 className="font-semibold mb-4">产品</h4>
+              <h4 className="font-semibold mb-4">{t("footer.product")}</h4>
               <ul className="space-y-3 text-white/60">
-                <li><a href="#" className="hover:text-white transition-colors">核心功能</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">商家入驻</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">下载 App</a></li>
+                <li><a href="#features" className="hover:text-white transition-colors">{t("footer.product.features")}</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">{t("footer.product.merchant")}</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">{t("footer.product.download")}</a></li>
               </ul>
             </div>
             
             <div>
-              <h4 className="font-semibold mb-4">联系我们</h4>
+              <h4 className="font-semibold mb-4">{t("footer.contact")}</h4>
               <ul className="space-y-3 text-white/60">
                 <li>qiwei.ji@faxianwo.me</li>
                 <li>WeChat: JQW5958</li>
@@ -684,7 +590,7 @@ export default function Home() {
           </div>
           
           <div className="border-t border-white/10 mt-12 pt-8 text-center text-white/40">
-            <p>© 2025 FIND ME. All rights reserved.</p>
+            <p>{t("footer.copyright")}</p>
           </div>
         </div>
       </footer>
